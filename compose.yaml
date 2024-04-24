@@ -1,0 +1,24 @@
+services:
+  lab10:
+    image: "my-image-lab12"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/lab12
+      - SPRING_DATASOURCE_USERNAME=lab12-user
+      - SPRING_DATASOURCE_PASSWORD=lab12-password
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=create
+      - SPRING_JPA_SHOW_SQL=true
+      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQLDialect
+
+  mysql:
+    image: "mysql:latest"
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=lab12
+      - MYSQL_USER=lab12-user
+      - MYSQL_PASSWORD=lab12-password
